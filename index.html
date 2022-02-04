@@ -14,15 +14,30 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <!-- css style  -->
+    <link rel="stylesheet" href="./style.css">
+    <link href="./ideas.png" rel="icon" type="image/x-icon" />
     <title>Quiz</title>
   </head>
   <body>
-    <div class="container m-5" id="start">
-      <div class="card" style="width: 18rem">
+  <!-- nav bar -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./ideas.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+         QUIZZ!
+      </a>
+    </div>
+  </nav>
+    <div class="container m-5 " id="start">
+      <div class="card text-center" style="width: 18rem">
         <div class="card-body">
-          <h5 class="card-title">Test your knowledge</h5>
-          <p class="card-text">Some quick description about the quiz .</p>
-          <a class="btn btn-primary">Start</a>
+          <h5 class="card-title">Test your knowledge on Javascript.</h5>
+          <p class="card-text">Some interesting question to refresh your javascript.
+            You will have 90 seconds to answer 5 questions.When you are ready click start.
+          </p>
+          <a class="btn" id="startBtn">START</a>
         </div>
       </div>
     </div>
@@ -30,19 +45,25 @@
     <!-- (B) QUIZ CONTAINER -->
     <div class="container" id="quizBlock" style="display: none">
       <div class="mb-5">
-        <h2>Test your knowledge</h2>
-        - Time remaining <span id="time">01:00</span>
+        <h2>Test your knowledge on Javascript.</h2>
+        <h4 >Time remaining <span id="time"></span></h4>
+        <div>
+          <span id="score"></span>
+        </div>
+        <br>
       </div>
+      
       <div id="quizWrap"></div>
 
       <div>
         <button type="button" class="btn btn-primary" id="btnSubmit">
           Submit Quiz
         </button>
-        <button type="button" class="btn btn-primary" id="btnReset">
+        <button type="button" class="btn btn-warning" id="btnReset">
           Reset Quiz
         </button>
-        <span id="score"></span>
+        
+       
       </div>
     </div>
 

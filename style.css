@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#time{
+    color:Red;
+    float: right;
+}
+body{
+     background-color: rgb(69,23,142);;
+     
+}
+#score{
+    color:#fff;
+    font-size:2em;
+    float:right;
+}
+#start{
+    position:absolute;;
+    top:20%;
+    left:35%;
+    
+}
+.card{
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgb(212, 241, 241);
+    ;
+}
+h2{
+    color: #fff;
+    text-align: center;
+}
+#startBtn{
+    background-color:#333333;
+    color: #fff;
+}
+ul,h4{
+    color: #fff;
+}
+ul>li{
+    color:black
+}

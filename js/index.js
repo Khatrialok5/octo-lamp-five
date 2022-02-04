@@ -1,20 +1,6 @@
 /* ***************************
-  JWD JavaScript Assessment
 
-  This code is unfinished. You will need to study it to figure out what it does. Then you will need to use this and
-  your own code, to finish the app. 
   
-  The tasks you need to do are below.
-
-    TASKS TODO:
-      1. Calculate the score as the total of the number of correct answers
-
-      2. Add an Event listener for the submit button, which will display the score and highlight 
-         the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you.
-
-      3. Add 2 more questions to the app (each question must have 4 options).
-
-      4. Reload the page when the reset button is clicked (hint: search window.location)
 
       5. Add a countdown timer - when the time is up, end the quiz, display the score and highlight the correct answers
 *************************** */
@@ -24,26 +10,36 @@ window.addEventListener('DOMContentLoaded', () => {
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
+    startTimeCountDown();
   });
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
   // Basic ideas from https://code-boxx.com/simple-javascript-quiz/
-  const quizArray = [
-    {
-      q: 'Which is the third planet from the sun?',
-      o: ['Saturn', 'Earth', 'Pluto', 'Mars'],
+  const quizArray = [{
+      q: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+      o: ['if i = !5 then', 'if(i != 5)', 'if 1 <> 5', 'if(i <> 5)'],
       a: 1, // array index 1 - so Earth is the correct answer here
     },
     {
-      q: 'Which is the largest ocean on Earth?',
-      o: ['Atlantic Ocean', 'Indian Ocean', 'Arctic Ocean', 'Pacific Ocean'],
+      q: 'How do you round the number 7.25, to the nearest integer?',
+      o: ['rnd(7.25)', 'round(7.25)', 'Math.rnd(7.25)', 'Math.round(7.25)'],
       a: 3,
     },
     {
-      q: 'What is the capital of Australia',
-      o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
+      q: 'Which event occurs when the user clicks on an HTML element?',
+      o: ['onmouseclick', 'onclick', 'onchange', 'onmouseover'],
       a: 1,
     },
+    {
+      q: 'A Function Associated With An object is Called?',
+      o: ['Function', 'Method', 'Link', 'None'],
+      a: 1,
+    },
+    {
+      q: 'How do you write "Hello World" in an alert box?',
+      o: ['alertBox("Hello World")', 'msgBox("Hello World")', 'alert("Hello World")', 'msg("Hello World")'],
+      a: 2,
+    }
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -57,6 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <li class="list-group-item" id="li_${index}_1"><input type="radio" name="radio${index}" id="radio_${index}_1"> ${quizItem.o[1]}</li>
                     <li class="list-group-item"  id="li_${index}_2"><input type="radio" name="radio${index}" id="radio_${index}_2"> ${quizItem.o[2]}</li>
                     <li class="list-group-item"  id="li_${index}_3"><input type="radio" name="radio${index}" id="radio_${index}_3"> ${quizItem.o[3]}</li>
+
                     </ul>
                     <div>&nbsp;</div>`;
       quizWrap.innerHTML = quizDisplay;
@@ -65,6 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Calculate the score
   const calculateScore = () => {
+    const final_score = document.getElementById("score")
     let score = 0;
     quizArray.map((quizItem, index) => {
       for (let i = 0; i < 4; i++) {
@@ -76,10 +74,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+          liElement.style.background = '#1cd108'
+
         }
 
         if (radioElement.checked) {
+
           // code for task 1 goes here
+          if (r === `radio_${index}_${quizItem.a}`) {
+            score += 1;
+            console.log(r + `radio_${index}_${quizItem.a}`);
+          }
+          console.log(`Your score is ${score} out of 5.`);
+          final_score.innerHTML = `Your score is ${score} out of 5.`;
+        }
+        else{
+          final_score.innerHTML = `Your score is ${score} out of 5.`;
+
         }
       }
     });
@@ -87,4 +98,53 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // call the displayQuiz function
   displayQuiz();
+
+  //submit button for
+  const btnSubmit = document.querySelector('#btnSubmit')
+  btnSubmit.addEventListener('click', function (e) {
+    calculateScore()
+    btnSubmit.disabled = true;
+  });
+
+
 });
+
+
+
+
+
+
+//reste button
+const btnReset = document.querySelector('#btnReset')
+btnReset.addEventListener('click', reset)
+
+function reset() {
+  score = 0;
+  window.location.reload()
+
+}
+
+// countdown timer
+const timerElement = document.getElementById('time');
+let timer;
+
+function startTimeCountDown() {
+  timer = 90;
+  const timeCountdown = setInterval(countdown, 1000);
+}
+
+
+function countdown() {
+  if (timer < 0) {
+    clearTimeout(timer);
+    // if( confirm("TIMES UP!")){
+    //   document.querySelector('#btnSubmit').click();
+    // }
+    document.querySelector('#btnSubmit').click();
+
+  } else {
+    timerElement.innerHTML = timer + ' secs';
+    timer--;
+  }
+}
+
