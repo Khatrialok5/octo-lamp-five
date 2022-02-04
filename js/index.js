@@ -126,7 +126,7 @@ const timerElement = document.getElementById('time');
 let timer;
 
 function startTimeCountDown() {
-  timer = 15;
+  timer = 60;
   const timeCountdown = setInterval(countdown, 1000);
 }
 
