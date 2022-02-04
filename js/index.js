@@ -73,6 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
           liElement.style.background = '#1cd108'
 
         }
+         
 
         if (radioElement.checked) {
 
@@ -125,7 +126,7 @@ const timerElement = document.getElementById('time');
 let timer;
 
 function startTimeCountDown() {
-  timer = 90;
+  timer = 15;
   const timeCountdown = setInterval(countdown, 1000);
 }
 
