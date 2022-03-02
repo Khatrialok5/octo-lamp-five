@@ -76,6 +76,12 @@ window.addEventListener('DOMContentLoaded', () => {
          
 
         if (radioElement.checked) {
+          if(quizItem.a == i) {
+            liElement.style.background = '#1cd108'
+          }
+          else{
+            liElement.style.background = 'red'
+          }
 
           // code for task 1 goes here
           if (r === `radio_${index}_${quizItem.a}`) {
